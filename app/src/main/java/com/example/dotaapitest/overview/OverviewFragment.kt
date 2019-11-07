@@ -25,7 +25,7 @@ class OverviewFragment : Fragment() {
     ): View? {
         val binding = FragmentOverviewBinding.inflate(inflater)
 
-        binding.lifecycleOwner
+        binding.lifecycleOwner = this
 
         binding.viewModel = viewModel
 
