@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.example.dotaapitest.R
 import com.example.dotaapitest.databinding.FragmentOverviewBinding
 
@@ -30,6 +32,14 @@ class OverviewFragment : Fragment() {
 
         binding.heroList.adapter = HeroListAdapter(HeroListAdapter.OnClickListener {
             viewModel.displayPropertyDetails(it)
+        })
+
+        viewModel.navigateToSelectedProperty.observe(this, Observer {
+            if ( null != it ) {
+                this.findNavController().navigate(
+                    OverviewFragmentDirections.actionOverviewFragmentToDetailFragment(it))
+                viewModel.displayPropertyDetailsComplete()
+            }
         })
 
         setHasOptionsMenu(false)
