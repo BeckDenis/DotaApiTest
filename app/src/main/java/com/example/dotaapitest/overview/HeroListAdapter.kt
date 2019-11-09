@@ -34,9 +34,7 @@ class HeroListAdapter : ListAdapter<DotaProperty, HeroListAdapter.DotaPropertyVi
 
     }
 
-    class DotaPropertyViewHolder(private var binding:
-                                 GridViewItemBinding
-    ):
+    class DotaPropertyViewHolder(private var binding: GridViewItemBinding):
         RecyclerView.ViewHolder(binding.root) {
         fun bind(dotaProperty: DotaProperty) {
             binding.property = dotaProperty

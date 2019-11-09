@@ -30,7 +30,7 @@ class OverviewFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        binding.photosGrid.adapter = HeroListAdapter()
+        binding.heroList.adapter = HeroListAdapter()
 
         return binding.root
     }
