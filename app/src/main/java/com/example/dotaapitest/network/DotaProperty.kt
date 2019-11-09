@@ -9,7 +9,11 @@ data class DotaProperty(
     val name: String,
     val localized_name: String,
     val img: String,
-    val icon: String
-)
+    val icon: String,
+    val attack_type: String
+) {
+    val isAttackType
+        get() = attack_type == "Melee"
+}
 
 
