@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.example.dotaapitest.databinding.FragmentOverviewBinding
+import com.example.dotaapitest.databinding.GridViewItemBinding
 
 /**
  * A simple [Fragment] subclass.
@@ -28,6 +29,8 @@ class OverviewFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.viewModel = viewModel
+
+        binding.photosGrid.adapter = HeroListAdapter()
 
         return binding.root
     }

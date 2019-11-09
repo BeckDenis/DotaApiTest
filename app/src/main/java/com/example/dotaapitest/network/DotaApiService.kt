@@ -1,7 +1,9 @@
 package com.example.dotaapitest.network
 
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import kotlinx.coroutines.Deferred
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -15,16 +17,17 @@ private val moshi = Moshi.Builder()
 
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(MoshiConverterFactory.create(moshi))
+    .addCallAdapterFactory(CoroutineCallAdapterFactory())
     .baseUrl(BASE_URL)
     .build()
 
-interface MarsApiService {
-    @GET("heroes")
+interface DotaApiService {
+    @GET("heroStats")
     fun getProperties():
-            Call<List<MarsProperty>>
+            Deferred<List<DotaProperty>>
 }
 
-object MarsApi {
-    val retrofitService : MarsApiService by lazy {
-        retrofit.create(MarsApiService::class.java) }
+object DotaApi {
+    val retrofitService : DotaApiService by lazy {
+        retrofit.create(DotaApiService::class.java) }
 }

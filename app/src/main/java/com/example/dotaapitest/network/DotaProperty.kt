@@ -4,9 +4,10 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.http.GET
 
-data class MarsProperty(
+data class DotaProperty(
     val id: Int,
-    val name: String
+    val name: String,
+    val img: String
 )
 
 
