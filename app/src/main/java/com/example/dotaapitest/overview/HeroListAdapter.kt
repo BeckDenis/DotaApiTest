@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dotaapitest.databinding.GridViewItemBinding
 import com.example.dotaapitest.network.DotaProperty
 
-class HeroListAdapter : ListAdapter<DotaProperty, HeroListAdapter.DotaPropertyViewHolder>(DiffCallback) {
+class HeroListAdapter(private val onClickListener: OnClickListener) : ListAdapter<DotaProperty, HeroListAdapter.DotaPropertyViewHolder>(DiffCallback) {
 
     companion object DiffCallback : DiffUtil.ItemCallback<DotaProperty>() {
         override fun areItemsTheSame(oldItem: DotaProperty, newItem: DotaProperty): Boolean {
@@ -30,6 +30,9 @@ class HeroListAdapter : ListAdapter<DotaProperty, HeroListAdapter.DotaPropertyVi
 
     override fun onBindViewHolder(holder: DotaPropertyViewHolder, position: Int) {
         val dotaProperty = getItem(position)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(dotaProperty)
+        }
         holder.bind(dotaProperty)
 
     }
@@ -41,4 +44,8 @@ class HeroListAdapter : ListAdapter<DotaProperty, HeroListAdapter.DotaPropertyVi
             binding.executePendingBindings()
         }
     }
+    class OnClickListener(val clickListener: (marsProperty:DotaProperty) -> Unit) {
+        fun onClick(marsProperty:DotaProperty) = clickListener(marsProperty)
+    }
 }
+

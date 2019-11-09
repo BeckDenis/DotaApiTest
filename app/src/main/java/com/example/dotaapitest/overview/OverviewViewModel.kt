@@ -56,6 +56,18 @@ class OverviewViewModel : ViewModel() {
         }
     }
 
+    private val _navigateToSelectedProperty = MutableLiveData<DotaProperty>()
+    val navigateToSelectedProperty: LiveData<DotaProperty>
+        get() = _navigateToSelectedProperty
+
+    fun displayPropertyDetails(marsProperty: DotaProperty) {
+        _navigateToSelectedProperty.value = marsProperty
+    }
+
+    fun displayPropertyDetailsComplete() {
+        _navigateToSelectedProperty.value = null
+    }
+
     override fun onCleared() {
         super.onCleared()
         viewmodelJob.cancel()
