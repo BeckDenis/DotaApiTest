@@ -11,18 +11,20 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
+enum class DotaApiStatus { LOADING, ERROR, DONE }
+
 class OverviewViewModel : ViewModel() {
 
-    // The internal MutableLiveData String that stores the most recent response
-    private val _response = MutableLiveData<String>()
+    // The internal MutableLiveData String that stores the most recent status
+    private val _status = MutableLiveData<DotaApiStatus>()
 
     private val viewmodelJob = Job()
 
     private val coroutineScope = CoroutineScope(viewmodelJob + Dispatchers.Main)
 
-    // The external immutable LiveData for the response String
-    val response: LiveData<String>
-        get() = _response
+    // The external immutable LiveData for the status String
+    val status: LiveData<DotaApiStatus>
+        get() = _status
 
     private val _properties = MutableLiveData<List<DotaProperty>>()
 
@@ -43,11 +45,13 @@ class OverviewViewModel : ViewModel() {
         coroutineScope.launch {
             var getPropertisDeferred = DotaApi.retrofitService.getProperties()
             try {
+                _status.value = DotaApiStatus.LOADING
                 val listResult = getPropertisDeferred.await()
-                _response.value = "Success: ${listResult.size} Mars properties retrieved"
+                _status.value = DotaApiStatus.DONE
                 _properties.value = listResult
             } catch (e: Exception) {
-                _response.value = "Failure: ${e.message}"
+                _status.value = DotaApiStatus.ERROR
+                _properties.value = ArrayList()
             }
         }
     }
