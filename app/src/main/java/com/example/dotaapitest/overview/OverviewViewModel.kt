@@ -32,16 +32,16 @@ class OverviewViewModel : ViewModel() {
         get() = _properties
 
     /**
-     * Call getMarsRealEstateProperties() on init so we can display status immediately.
+     * Call getDotaHeroesProperties() on init so we can display status immediately.
      */
     init {
-        getMarsRealEstateProperties()
+        getDotaHeroesProperties()
     }
 
     /**
      * Sets the value of the status LiveData to the Mars API status.
      */
-    private fun getMarsRealEstateProperties() {
+    private fun getDotaHeroesProperties() {
         coroutineScope.launch {
             var getPropertisDeferred = DotaApi.retrofitService.getProperties()
             try {
