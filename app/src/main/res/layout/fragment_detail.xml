@@ -32,19 +32,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="230dp"
-                    android:background="@color/colorWhiteTr" />
+                android:orientation="vertical"
+                android:background="@color/colorWhiteTr">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorPrimary"
+                    android:background="@drawable/hero_detail_bg"
                     android:paddingStart="16dp"
-                    android:paddingEnd="16dp">
+                    android:paddingEnd="16dp"
+                    android:layout_marginTop="220dp">
 
                     <TextView
                         android:id="@+id/property_type_text"
@@ -53,7 +50,7 @@
                         android:layout_marginTop="16dp"
                         android:text="@{viewModel.selectedProperty.localized_name}"
                         android:textColor="@color/colorWhite"
-                        android:textSize="45sp"
+                        android:textSize="39sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:text="To Rent" />
@@ -62,7 +59,7 @@
                         android:id="@+id/attack_type"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="26sp"
+                        android:textSize="20sp"
                         android:layout_marginTop="10dp"
                         android:textColor="@color/colorWhite"
                         app:layout_constraintTop_toBottomOf="@id/property_type_text"
@@ -75,7 +72,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorWhite"
-                        android:textSize="26sp"
+                        android:textSize="20sp"
                         android:text="@{viewModel.selectedProperty.attack_type}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/attack_type"
@@ -85,12 +82,12 @@
                         android:id="@+id/base_health"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="26sp"
+                        android:textSize="20sp"
                         android:layout_marginTop="10dp"
                         android:textColor="@color/colorWhite"
                         app:layout_constraintTop_toBottomOf="@id/attack_type"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:text="Base health:"
+                        android:text="@string/base_health"
                         />
 
                     <TextView
@@ -98,7 +95,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorWhite"
-                        android:textSize="26sp"
+                        android:textSize="20sp"
                         android:text="@{viewModel.selectedProperty.baseHealth}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/base_health"
@@ -108,12 +105,12 @@
                         android:id="@+id/base_mana_regen"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="26sp"
+                        android:textSize="20sp"
                         android:layout_marginTop="10dp"
                         android:textColor="@color/colorWhite"
                         app:layout_constraintTop_toBottomOf="@id/base_health"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:text="Base mana:"
+                        android:text="@string/base_mana"
                         />
 
                     <TextView
@@ -121,7 +118,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorWhite"
-                        android:textSize="26sp"
+                        android:textSize="20sp"
                         android:text="@{viewModel.selectedProperty.baseMana}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/base_mana_regen"
@@ -131,12 +128,12 @@
                         android:id="@+id/base_attack_min"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="26sp"
+                        android:textSize="20sp"
                         android:layout_marginTop="10dp"
                         android:textColor="@color/colorWhite"
                         app:layout_constraintTop_toBottomOf="@id/base_mana_regen"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:text="Base armor:"
+                        android:text="@string/base_attack_min"
                         />
 
                     <TextView
@@ -144,18 +141,135 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorWhite"
-                        android:textSize="26sp"
+                        android:textSize="20sp"
                         android:text="@{viewModel.selectedProperty.baseAttackMin}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/base_attack_min"
                         tools:text="0" />
 
                     <TextView
+                        android:id="@+id/base_attack_max"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/colorWhite"
+                        app:layout_constraintTop_toBottomOf="@id/base_attack_min"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="@string/base_attack_max"
+                        />
+
+                    <TextView
+                        android:id="@+id/base_attack_max_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="20sp"
+                        android:text="@{viewModel.selectedProperty.baseAttackMax}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/base_attack_max"
+                        tools:text="0" />
+
+                    <TextView
+                        android:id="@+id/roles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/colorWhite"
+                        app:layout_constraintTop_toBottomOf="@id/base_attack_max"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="@string/roles"
+                        />
+
+                    <TextView
+                        android:id="@+id/roles_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="20sp"
+                        android:maxWidth="180dp"
+                        android:text="@{viewModel.selectedProperty.rolesString}"
+                        android:textAlignment="viewEnd"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/roles"
+                        tools:text="0" />
+
+                    <TextView
+                        android:id="@+id/move_speed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/colorWhite"
+                        app:layout_constraintTop_toBottomOf="@id/roles_value"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="@string/move_speed"
+                        />
+
+                    <TextView
+                        android:id="@+id/move_speed_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="20sp"
+                        android:text="@{viewModel.selectedProperty.moveSpeed}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/move_speed"
+                        tools:text="0" />
+
+                    <TextView
+                        android:id="@+id/attack_range"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/colorWhite"
+                        app:layout_constraintTop_toBottomOf="@id/move_speed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="@string/attack_range"
+                        />
+
+                    <TextView
+                        android:id="@+id/attack_range_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="20sp"
+                        android:text="@{viewModel.selectedProperty.attackRange}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/attack_range"
+                        tools:text="0" />
+
+                    <TextView
+                        android:id="@+id/legs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/colorWhite"
+                        app:layout_constraintTop_toBottomOf="@id/attack_range"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="@string/legs"
+                        />
+
+                    <TextView
+                        android:id="@+id/legs_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="20sp"
+                        android:text="@{viewModel.selectedProperty.legsString}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/legs"
+                        tools:text="0" />
+
+                    <TextView
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="290dp"
-                        app:layout_constraintTop_toBottomOf="@id/base_attack_min_value"/>
+                        android:layout_marginTop="530dp"
+                        app:layout_constraintTop_toTopOf="parent"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

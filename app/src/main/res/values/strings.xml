@@ -7,4 +7,13 @@
     <string name="show_melee">Melee</string>
     <string name="show_ranged">Ranged</string>
     <string name="attack_type">Attack type:</string>
+    <string name="base_mana">Base mana:</string>
+    <string name="base_armor">Base armor:</string>
+    <string name="base_health">Base health:</string>
+    <string name="roles">Roles:</string>
+    <string name="move_speed">Move speed:</string>
+    <string name="base_attack_min">Base attack min:</string>
+    <string name="base_attack_max">Base attack max:</string>
+    <string name="attack_range">Attack range:</string>
+    <string name="legs">Legs:</string>
 </resources>
